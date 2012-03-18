@@ -1,0 +1,220 @@
+(progn (load "/Users/shawnpage/slime/swank-loader.lisp" :verbose t) (funcall (read-from-string "swank-loader:init")) (funcall (read-from-string "swank:start-server") "/var/folders/Mm/Mm76kKYp2RiC+E+BYqVZ2++++TQ/-Tmp-/slime.9067" :coding-system "iso-latin-1-unix"))
+
+This is SBCL 1.0.30, an implementation of ANSI Common Lisp.
+More information about SBCL is available at <http://www.sbcl.org/>.
+
+SBCL is free software, provided as is, with absolutely no warranty.
+It is mostly in the public domain; some portions are provided under
+BSD-style licenses.  See the CREDITS and COPYING files in the
+distribution for more information.
+* 
+; loading #P"/Users/shawnpage/slime/swank-loader.lisp"
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank-backend.fasl"
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank-source-path-parser.fasl"
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank-source-file-cache.fasl"
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank-sbcl.fasl"
+STYLE-WARNING: redefining EMACS-INSPECT (#<BUILT-IN-CLASS T>) in DEFMETHOD
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank-gray.fasl"
+STYLE-WARNING:
+   Implicitly creating new generic function STREAM-READ-CHAR-WILL-HANG-P.
+; loading #P"/Users/shawnpage/.slime/fasl/2009-07-30/sbcl-1.0.30-darwin-x86/swank.fasl"
+WARNING: These Swank interfaces are unimplemented:
+ (ALL-THREADS CALLS-WHO DISASSEMBLE-FRAME INTERRUPT-THREAD RECEIVE-IF SEND
+  SLDB-BREAK-AT-START SLDB-BREAK-ON-RETURN SPAWN WHO-SPECIALIZES)
+;; Swank started at port: 64588.
+64588
+* (list 1 2 3)
+
+(1 2 3)
+* (list :a 1 :b 2 :c 3)
+
+(:A 1 :B 2 :C 3)
+* (getf (list :a 1 :b 2 :c 3) :b)
+
+1
+* (getf (list :a 1 :b 2 :c 3) :c)
+
+2
+* (getf (list :a 1 :b 2 :c 3) :c)
+
+3
+* (defun make-cd (title artist rating ripped)
+    (list :title title :artist artist :rating rating :ripped ripped))
+
+MAKE-CD
+* (make-cd "Baby" "Bobby McFerrin" 5 t)
+
+(:TITLE "Baby" :ARTIST "Bobby McFerrin" :RATING 5 :RIPPED T)
+* (defvar *db* nil)
+
+*DB*
+* (defun add-record (cd) (push cd *db*))
+
+; in: LAMBDA NIL
+;     (PUSH CD *DB)
+; --> LET* 
+; ==>
+;   (SETQ *DB #:NEW0)
+; 
+; caught WARNING:
+;   undefined variable: *DB
+; 
+; compilation unit finished
+;   Undefined variable:
+;     *DB
+;   caught 1 WARNING condition
+
+ADD-RECORD
+* (defun add-record (cd) (push cd *db*))
+STYLE-WARNING: redefining ADD-RECORD in DEFUN
+
+ADD-RECORD
+* (add-record (make-cd "Baby"" "Bobby McFerrin" 4 t))
+
+((:TITLE "Pink Panther" :ARTIST "Bobby McFerrin" :RATING 3 :RIPPED T))
+* (add-record (make-cd "Baby" "Bobby McFerrin" 4 t))
+
+(add-record (make-cd "Baby"" "Bobby McFerrin" 4 t))
+
+* (add-record (make-cd "Don't Worry be Happy" "Bobby McFerrin" 5 t))
+
+((:TITLE "Baby" :ARTIST "Bobby McFerrin" :RATING 4 :RIPPED T)
+ (:TITLE "Pink Panther" :ARTIST "Bobby McFerrin" :RATING 3 :RIPPED T))
+* (add-record (make-cd "Don't Worry be Happy" "Bobby McFerrin" 5 t))
+
+((:TITLE "Don't Worry be Happy" :ARTIST "Bobby McFerrin" :RATING 5 :RIPPED T)
+ (:TITLE "Baby" :ARTIST "Bobby McFerrin" :RATING 4 :RIPPED T)
+ (:TITLE "Pink Panther" :ARTIST "Bobby McFerrin" :RATING 3 :RIPPED T))
+* *db*
+
+((:TITLE "Don't Worry be Happy" :ARTIST "Bobby McFerrin" :RATING 5 :RIPPED T)
+ (:TITLE "Baby" :ARTIST "Bobby McFerrin" :RATING 4 :RIPPED T)
+ (:TITLE "Pink Panther" :ARTIST "Bobby McFerrin" :RATING 3 :RIPPED T))
+* (defun dump-db ()
+    (dolist (cd *db*)
+    (format t "~{~a:~10t~a~%~}~%" cd)))
+
+DUMP-DB
+* (format nil -R 3.14)
+
+* (format nil "-r" 3.14)
+
+"-r"
+* (format nil "~r" 3.14)
+
+"one octillion six hundred six septillion nine hundred thirty-eight sextillion forty-four quintillion two hundred fifty-eight quadrillion nine hundred ninety trillion two hundred seventy-five billion five hundred forty-one million nine hundred sixty-two thousand ninety-two"
+* (format nil "~r" 314)
+
+* (format nil "~r" 314)
+
+"three hundred fourteen"
+* (format nil "~r" 100000)
+
+* (format nil "~r" 1000000)
+
+"one hundred thousand"
+* (format nil "~r" 10000000)
+
+"one million"
+* (format nil "~r" 100000000)
+
+"ten million"
+* (format nil "~r" 1000000000)
+
+"one hundred million"
+* (format nil "~r" 10000000000)
+
+"one billion"
+* (format nil "~r" 100000000000)
+
+"ten billion"
+* (format nil "~r" 1000000000000)
+
+"one hundred billion"
+* (format nil "~r" 10000000000000)
+
+"one trillion"
+* (format nil "~r" 100000000000000)
+
+"ten trillion"
+* (format nil "~r" 1000000000000000)
+
+"one hundred trillion"
+* (format nil "~r" 10000000000000000)
+
+"one quadrillion"
+* (format nil "~r" 100000000000000000)
+
+"ten quadrillion"
+* (format nil "~r" 1000000000000000000)
+
+"one hundred quadrillion"
+* (format nil "~r" 1000000000000000000000000)
+
+"one quintillion"
+* (format nil "~r" 1000000000000000000000000000)
+
+"one septillion"
+* (format nil "~r" 1000000000000000000000000000000)
+
+"one octillion"
+* (format nil "~r" 1000000000000000000000000000000000)
+
+"one nonillion"
+* (format nil "~r" 1000000000000000000000000000000000000)
+
+"one decillion"
+* (format nil "~r" 1000000000000000000000000000000000000000)
+
+"one undecillion"
+* (format nil "~r" 1000000000000000000000000000000000000000000)
+
+"one duodecillion"
+* (format nil "~r" 1000000000000000000000000000000000000000000000)
+
+"one tredecillion"
+* (format nil "~r" 1000000000000000000000000000000000000000000000000)
+
+"one quattuordecillion"
+* (format nil "~r" 1000000000000000000000000000000000000000000000000000)
+
+"one quindecillion"
+* (format nil "~r" 1000000000000000000000000000000000000000000000000000000)
+
+"one sexdecillion"
+* (format nil "~r" 10000000000000000000000000000000000000000000000000000000000)
+
+"one septendecillion"
+* (format nil "~r" 10000000000000000000000000000000000000000000000000000000000000)
+
+"ten octodecillion"
+* (format nil "~r" 100000000000000000000000000000000000000000000000000000000000000000)
+
+"ten novemdecillion"
+* (format nil "~r" 100000000000000000000000000000000000000000000000000000000000000000)
+
+"one hundred vigintillion"
+* (format nil "~r" 10000000000000000000000000000000000000000000000000000000000000000)
+
+"one hundred vigintillion"
+* (format nil "~r" 10000000000000000000000000000000000000000000000000000000000000000)
+
+"ten vigintillion"
+* STYLE-WARNING: redefining MAKE-CD in DEFUN
+STYLE-WARNING: redefining ADD-RECORD in DEFUN
+STYLE-WARNING: redefining DUMP-DB in DEFUN
+
+
+(prompt-read)
+
+* Title: Simple Man
+Artist: Lynaard Skynaard
+Rating: 3
+Ripped [y/n]: y
+
+
+(+ 2 2)
+4
+* 
+
+Process inferior-lisp finished
