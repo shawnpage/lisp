@@ -1,4 +1,4 @@
 
-( define pi 3.14)
+( defun pi 3.14)
 ( + 1 pi)
 

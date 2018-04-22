@@ -1,1 +1,20 @@
-../../slime_shortcuts.txt
+C-c C-z switches to the buffer where you interact with Lisp.
+
+C-c C-q( or C-c C-] ) to invoke the command slime-close-parens-at-point, Which will insert as 
+many closing parentheses as necessary to match all the currently open 
+parentheses.
+
+C-c C-c with the cursor anywhere in or immediately after the DEFUN form, which 
+runs the command slime-compile-defun, which in turn sends the definition to Lisp
+to be evaluated and compiled.
+
+C-c C-l when you're in a source code buffer to load the file with 
+slime-load-file. Emacs will prompt for the name of a file to load with the name 
+of the current file already filled in; you can just hit Enter. 
+
+C-c C-k to compile and load the file represented by the current buffer. In
+some Common Lisp implementations, compiling code this way will make it quite a 
+bit faster; in others, it won't, typically because they always compile 
+everything.
+
+

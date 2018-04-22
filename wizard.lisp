@@ -15,4 +15,4 @@
 		       (attic        (living-room downstairs ladder))))
 
 (defun describe-path (edge)
-  `(there is a ,(caddr edge) going ,(cadr edge) from here.
+  `(there is a ,(caddr edge) going ,(cadr edge) from here.))

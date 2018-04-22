@@ -79,3 +79,29 @@
 	  0
 	  (let ((z (mystery x (cdr y))))
 	    (and z (+ z 1))))))
+
+(defun show-squares (start end)
+  (do ((i start (+ i 1)))
+      ((> i end) 'done)
+    (format t "~A ~A~%" i (* i i))))
+
+(defun dot-iter (num)
+  (do ((i 1 (+ i 1)))
+      ((> i num) 'done)
+    (format t ".")))
+
+(defun dot-recur (num)
+  (format t "~A" num)
+  (dot-recur (- num 1))
+  (if (> num 0)
+      (format t ".")
+      'done
+  )
+)
+
+
+      
+		
+
+
+  

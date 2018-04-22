@@ -9,3 +9,7 @@
 
 (defun good-bye () 
   (format t "Good-Bye!"))
+
+(defun good-bye2 () 
+  (format t "Bye Now!"))
+
